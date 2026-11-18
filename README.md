@@ -218,9 +218,7 @@ The [`docs/`](docs/) directory contains 15 detailed technical documents:
 
 ---
 
-## 👥 Team
-
-**G.H. Raisoni College of Engineering, Nagpur** — Department of Computer Science & Engineering
+## 👥 Made By Harman Singh Kohli
 
 ---
 
