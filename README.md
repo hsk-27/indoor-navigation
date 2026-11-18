@@ -1,6 +1,6 @@
 # 🏢 GHRCE Indoor Navigation System
 
-A production-grade indoor navigation platform for G.H. Raisoni College of Engineering, Nagpur. Provides real-time turn-by-turn pedestrian routing inside multi-floor buildings using sensor fusion, graph-based pathfinding, and an interactive administrative map editor — all accessible instantly via a single QR code scan.
+A production-grade indoor navigation platform subject to pending publication. Provides real-time turn-by-turn pedestrian routing inside multi-floor buildings using sensor fusion, graph-based pathfinding, and an interactive administrative map editor — all accessible instantly via a single QR code scan.
 
 ![React](https://img.shields.io/badge/React_18-61DAFB?style=flat&logo=react&logoColor=black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
