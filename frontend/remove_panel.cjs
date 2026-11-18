@@ -1,0 +1,1 @@
+const fs = require('fs'); const lines = fs.readFileSync('src/pages/MapPage.tsx', 'utf8').split('\n'); const newLines = [...lines.slice(0, 1496), ...lines.slice(1620)]; fs.writeFileSync('src/pages/MapPage.tsx', newLines.join('\n')); console.log('Done');

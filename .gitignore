@@ -1,0 +1,74 @@
+# ============================================
+# Indoor Navigation System — .gitignore
+# ============================================
+
+# -------------------- Environment & Secrets --------------------
+.env
+!.env.example
+
+# -------------------- OS / IDE --------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+*.iml
+
+# -------------------- Frontend (Node / Vite / React) --------------------
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/.env
+frontend/*.log
+
+# -------------------- Frontend Android (Capacitor / Gradle) --------------------
+# The android/.gitignore handles build/, .gradle/, local.properties, etc.
+# But also exclude from root-level git tracking:
+frontend/android/.idea/
+frontend/android/local.properties
+frontend/android/.gradle/
+frontend/android/build/
+frontend/android/app/build/
+frontend/android/app/src/main/assets/public/
+frontend/android/app/src/main/assets/capacitor.config.json
+frontend/android/app/src/main/assets/capacitor.plugins.json
+frontend/android/app/src/main/res/xml/config.xml
+frontend/android/capacitor-cordova-android-plugins/
+
+# -------------------- Backend (Java / Maven / Spring Boot) --------------------
+backend/target/
+backend/*.log
+backend/*.jar
+backend/.mvn/
+backend/indoor_nav.db
+
+# -------------------- Sensitive Blueprint & Map Assets --------------------
+# SVG floor plans are sensitive architectural blueprints
+backend/uploads/svgs/
+maps/
+*.svg
+
+# -------------------- Backend Runtime Data --------------------
+# APK is rebuilt per-deployment (network-specific), don't commit
+backend/uploads/ghrce-nav.apk
+# Telemetry data is runtime-generated
+backend/uploads/telemetry.json
+# Deployment config has machine-specific IPs
+backend/config/deployment.json
+
+# -------------------- Database --------------------
+# Live backups are auto-generated, keep the schema + seed data in database/
+database_backup.sql
+database_backup_pre_audit_fix.sql
+
+# -------------------- Docker --------------------
+db_data/
+
+# -------------------- Misc --------------------
+.agents/
+*.hprof
+*.bak
+*.tmp

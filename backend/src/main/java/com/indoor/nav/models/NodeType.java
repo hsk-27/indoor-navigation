@@ -1,0 +1,22 @@
+package com.indoor.nav.models;
+
+public enum NodeType {
+    ROOM,
+    LABORATORY,
+    OFFICE,
+    CLASSROOM,
+    STAIRCASE,
+    LIFT,
+    CORRIDOR,
+    CORRIDOR_INTERSECTION,
+    CORRIDOR_BEND,
+    ENTRANCE,
+    BUILDING_ENTRANCE,
+    FLOOR_ENTRANCE,
+    WASHROOM,
+    EMERGENCY_EXIT,
+    RECEPTION,
+    UTILITY,
+    DESTINATION,
+    CONNECTOR
+}

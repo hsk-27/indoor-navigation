@@ -1,0 +1,75 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: indoor_nav_db
+    env_file:
+      - .env
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      # Mount schema to initialize on first boot
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/1_schema.sql
+      # Mount data if exists (using wildcard to prevent crash if file is missing)
+      - ./backend/src/main/resources/data.sql:/docker-entrypoint-initdb.d/2_data.sql
+      - ./database/backups/real_graph.sql:/docker-entrypoint-initdb.d/3_graph.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U postgres -d indoor_nav"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: indoor_nav_backend
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./backend/uploads:/app/uploads
+      - ./backend/config:/app/config
+      - ./deployment:/deployment
+    env_file:
+      - .env
+    environment:
+      # Override the localhost URL to point to the db container
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/indoor_nav
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
+      # Ensure database schema validates
+      SPRING_JPA_HIBERNATE_DDL_AUTO: validate
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: indoor_nav_frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+  auto_backup:
+    image: postgres:15-alpine
+    container_name: indoor_nav_auto_backup
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./:/backup_dir
+    environment:
+      - PGPASSWORD=${POSTGRES_PASSWORD:-postgres}
+    command: sh -c "while true; do pg_dump -h db -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-indoor_nav} -c -F p > /backup_dir/database_backup.tmp.sql 2>/dev/null && mv /backup_dir/database_backup.tmp.sql /backup_dir/database_backup.sql; sleep 60; done"
+    restart: unless-stopped
+
+volumes:
+  db_data:
