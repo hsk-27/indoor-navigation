@@ -214,8 +214,6 @@ The [`docs/`](docs/) directory contains 15 detailed technical documents:
 - **Silent Token Refresh**: Frontend auto-refreshes JWT every 45 minutes to prevent session loss during long editing sessions.
 - **Public Read-Only API**: Navigation and map data endpoints are intentionally public for zero-friction mobile access.
 
-> ⚠️ **Before deploying to production**: Change the default admin password, rotate the JWT secret in `.env`, and set a strong `POSTGRES_PASSWORD`.
-
 ---
 
 ## 👥 Made By Harman Singh Kohli
