@@ -183,30 +183,6 @@ indoor-navigation/
 
 ---
 
-## 📖 Documentation
-
-The [`docs/`](docs/) directory contains 15 detailed technical documents:
-
-| # | Document | Scope |
-|---|---|---|
-| 01 | [Frontend Architecture](docs/01_FRONTEND_ARCHITECTURE.md) | React contexts, Vite config, Capacitor setup |
-| 02 | [Backend Architecture](docs/02_BACKEND_ARCHITECTURE.md) | Spring Boot structure, JWT security, service layer |
-| 03 | [Database Schema](docs/03_DATABASE_SCHEMA.md) | PostgreSQL 3NF normalized tables |
-| 04 | [Routing Engine](docs/04_ROUTING_ENGINE.md) | A\* algorithm, floor penalties, graph cache |
-| 05 | [Localization Pipeline](docs/05_LOCALIZATION_PIPELINE.md) | PDR + FLP sensor fusion + graph snapping |
-| 06 | [Navigation System](docs/06_NAVIGATION_SYSTEM.md) | Multi-floor segments, voice guidance, checkpoints |
-| 07 | [Graph Editor Manual](docs/07_GRAPH_EDITOR_MANUAL.md) | Admin visual editing, calibration, validation |
-| 08 | [API Reference](docs/08_API_REFERENCE.md) | Complete REST endpoint documentation |
-| 09 | [Deployment Guide](docs/09_DEPLOYMENT_GUIDE.md) | Docker Compose and Nginx configuration |
-| 10 | [Map Calibration](docs/10_MAP_COORDINATE_AND_CALIBRATION.md) | Coordinate systems, PPM, affine transforms |
-| 11 | [Upgrade Changelog](docs/11_SYSTEM_UPGRADE_CHANGELOG.md) | Architectural evolution log |
-| 12 | [Map UX Details](docs/12_MAP_UX_DETAILS.md) | Blue dot tracking, floor selector, route panels |
-| 13 | [AI Reconstruction](docs/13_AI_RECONSTRUCTION_MANUAL.md) | Technical constraints for LLM agents |
-| 14 | [Document Roster](docs/14_DOCUMENT_ROSTER.md) | Documentation index |
-| 15 | [Security Audit](docs/15_SECURITY_AUDIT.md) | Protected vs public endpoint analysis |
-
----
-
 ## 🛡️ Security Notes
 
 - **JWT Authentication**: Stateless Bearer token validation on all admin endpoints.
