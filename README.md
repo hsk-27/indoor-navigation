@@ -1,4 +1,4 @@
-# 🏢 GHRCE Indoor Navigation System
+# 🏢 Indoor Navigation System
 
 A production-grade indoor navigation platform subject to pending publication. Provides real-time turn-by-turn pedestrian routing inside multi-floor buildings using sensor fusion, graph-based pathfinding, and an interactive administrative map editor — all accessible instantly via a single QR code scan.
 
